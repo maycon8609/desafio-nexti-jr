@@ -21,7 +21,11 @@ class CustomerRepository implements ICustomerRepository {
   };
 
   public async delete(user_id: string): Promise<void> {
-    const customer = await this.findById(user_id);
+    const customer = await this.ormRepository.findOne({
+      where: {
+        id: user_id,
+      }
+    });
 
     if (customer) {
       await this.ormRepository.delete({ id: user_id });

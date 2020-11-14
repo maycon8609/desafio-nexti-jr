@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 
 import CreateCustomerService from '@modules/customers/services/CreateCustomerService';
 import UpdateCustomerService from '@modules/customers/services/UpdateCustomerService';
-import ListCustumerService from '@modules/customers/services/ListCustomerService';
+import ListCustomerService from '@modules/customers/services/ListCustomerService';
 import DeleteCustomerService from '@modules/customers/services/DeleteCustomerService';
 
 export default class CustomersController {
@@ -40,7 +40,7 @@ export default class CustomersController {
   public async index(request: Request, response: Response): Promise<Response> {
     const { user_id } = request.params;
 
-    const indexCustomer = container.resolve(ListCustumerService);
+    const indexCustomer = container.resolve(ListCustomerService);
 
     const customers = await indexCustomer.execute();
 
