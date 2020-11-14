@@ -22,7 +22,6 @@ class DeleteCustomerService {
     }
 
     await this.customerRepository.delete(user_id);
-    console.log('removel')
   }
 }
 
