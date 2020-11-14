@@ -1,4 +1,4 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import ICreateCustomerDTO from '@modules/customers/dtos/ICreateCustomerDTO';
 import ICustomerRepository from '@modules/customers/repositories/ICustomerRepository'
