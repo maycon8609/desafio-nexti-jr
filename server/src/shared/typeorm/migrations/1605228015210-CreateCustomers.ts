@@ -18,7 +18,9 @@ export default class CreateCustomers1605228015210 implements MigrationInterface 
         },
         {
           name: 'cpf',
-          type: 'int',
+          type: 'decimal',
+          precision: 11,
+          scale: 0,
         },
         {
           name: 'date_birth',

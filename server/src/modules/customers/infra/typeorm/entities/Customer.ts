@@ -8,7 +8,7 @@ class Customer {
   @Column()
   name: string;
 
-  @Column('int')
+  @Column('decimal')
   cpf: number;
 
   @Column('date')

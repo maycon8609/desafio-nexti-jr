@@ -4,33 +4,34 @@ import Customer from '@modules/customers/infra/typeorm/entities/Customer';
 import ICustomerRepository from '@modules/customers/repositories/ICustomerRepository';
 
 interface IRequest {
+  id: string;
   name: string;
   cpf: number;
   date_birth: Date;
 }
 
 @injectable()
-class CreateCustomerService {
+class UpdateCustomerService {
   constructor(
     @inject('CustomerRepository')
     private customerRepository: ICustomerRepository,
   ) { }
 
-  public async execute({ name, cpf, date_birth }: IRequest): Promise<Customer> {
-    const existiCustomer = await this.customerRepository.findByCpf(cpf);
+  public async execute({ id, name, cpf, date_birth }: IRequest): Promise<Customer> {
+    const customer = await this.customerRepository.findById(id);
 
-    if (existiCustomer) {
-      throw new Error('User already registered with the CPF informed');
+    if (!customer) {
+      throw new Error('Customer does not exist');
     }
 
-    const customer = await this.customerRepository.create({
-      name,
-      cpf,
-      date_birth
-    });
+    customer.name = name;
+    customer.cpf = cpf;
+    customer.date_birth = date_birth;
+
+    await this.customerRepository.save(customer);
 
     return customer;
   }
 }
 
-export default CreateCustomerService;
+export default UpdateCustomerService;

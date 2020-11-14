@@ -3,9 +3,11 @@ import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 
+import '@shared/typeorm'
+import '@shared/container';
+
 import routes from './routes'
 
-import '@shared/container';
 
 const app = express();
 
