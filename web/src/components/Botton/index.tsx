@@ -1,6 +1,4 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import { Link } from 'react-router-dom';
-
 import { Container } from './style';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
