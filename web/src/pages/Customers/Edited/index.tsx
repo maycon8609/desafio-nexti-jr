@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
-import Button from '../../components/Botton';
+import Button from '../../../components/Botton';
 import { Container, Footer, Logo, Body, Buttons } from './style';
 
-import ImageCliente from '../../assets/cliente.svg';
-import api from '../../services/api';
+import ImageCliente from '../../../assets/cliente.svg';
+import api from '../../../services/api';
 
 interface FormProps {
   name: string;
@@ -14,7 +14,13 @@ interface FormProps {
   date_birth: Date;
 }
 
-const Customer: React.FC = () => {
+interface IRouteParams {
+  id: string;
+}
+
+const CustomerEdited: React.FC = () => {
+  const { params } = useRouteMatch<IRouteParams>();
+
   const [nameForm, setNameForm] = useState('');
   const [cpfForm, setCpfForm] = useState('');
   const [dateBirthForm, setDateBirthForm] = useState('');
@@ -56,7 +62,7 @@ const Customer: React.FC = () => {
         date_birth: new Date(formatDate),
       }
 
-      await api.post('/customers', serializedData);
+      await api.put(`/customers/${params.id}`, serializedData);
     }
 
 
@@ -65,9 +71,11 @@ const Customer: React.FC = () => {
   return (
     <Container>
       <Footer>
-        <Logo>
-          <img src={ImageCliente} alt="cliente" />
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <img src={ImageCliente} alt="cliente" />
+          </Logo>
+        </Link>
         <Buttons>
           <Link to="/products">
             <Button color="transparent">PRODUTOS</Button>
@@ -120,10 +128,10 @@ const Customer: React.FC = () => {
               <Button color="#0097E6">LISTAR</Button>
             </Link>
 
-            <Link to="/">
+            <Link to="/customers">
               <Button color="#0097E6"
                 onClick={handleCreateCustomer}
-              >CRIAR</Button>
+              >EDITAR</Button>
             </Link>
           </div>
         </div>
@@ -132,4 +140,4 @@ const Customer: React.FC = () => {
   );
 };
 
-export default Customer;
+export default CustomerEdited;

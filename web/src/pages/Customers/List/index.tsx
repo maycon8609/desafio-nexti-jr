@@ -37,9 +37,11 @@ const CustomersList: React.FC = () => {
   return (
     < Container >
       <Footer>
-        <Logo>
-          <img src={ImageCliente} alt="cliente" />
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <img src={ImageCliente} alt="cliente" />
+          </Logo>
+        </Link>
         <Buttons>
           <Link to="/customers">
             <Button color="transparent">VOLTAR</Button>
@@ -73,7 +75,7 @@ const CustomersList: React.FC = () => {
 
                 <div className="icons">
                   <button>
-                    <FiTrash2 color="#c23616" size={18} onClick={() => handleDeleteCustomer(customer.id)}/>
+                    <FiTrash2 color="#c23616" size={18} onClick={() => handleDeleteCustomer(customer.id)} />
                   </button>
                   <Link to={`/customer-edited/${customer.id}`}>
                     <FiEdit3 color="#44bd32" size={18} />

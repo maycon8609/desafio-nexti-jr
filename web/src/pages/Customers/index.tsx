@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useState } from 'react';
 
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import Button from '../../../components/Botton';
+import Button from '../../components/Botton';
 import { Container, Footer, Logo, Body, Buttons } from './style';
 
-import ImageCliente from '../../../assets/cliente.svg';
-import api from '../../../services/api';
+import ImageCliente from '../../assets/cliente.svg';
+import api from '../../services/api';
 
 interface FormProps {
   name: string;
@@ -14,13 +14,7 @@ interface FormProps {
   date_birth: Date;
 }
 
-interface IRouteParams {
-  id: string;
-}
-
-const CustomerEdited: React.FC = () => {
-  const { params } = useRouteMatch<IRouteParams>();
-
+const Customer: React.FC = () => {
   const [nameForm, setNameForm] = useState('');
   const [cpfForm, setCpfForm] = useState('');
   const [dateBirthForm, setDateBirthForm] = useState('');
@@ -62,7 +56,7 @@ const CustomerEdited: React.FC = () => {
         date_birth: new Date(formatDate),
       }
 
-      await api.put(`/customers/${params.id}`, serializedData);
+      await api.post('/customers', serializedData);
     }
 
 
@@ -71,9 +65,11 @@ const CustomerEdited: React.FC = () => {
   return (
     <Container>
       <Footer>
-        <Logo>
-          <img src={ImageCliente} alt="cliente" />
-        </Logo>
+        <Link to="/">
+          <Logo>
+            <img src={ImageCliente} alt="cliente" />
+          </Logo>
+        </Link>
         <Buttons>
           <Link to="/products">
             <Button color="transparent">PRODUTOS</Button>
@@ -126,10 +122,10 @@ const CustomerEdited: React.FC = () => {
               <Button color="#0097E6">LISTAR</Button>
             </Link>
 
-            <Link to="/customers">
+            <Link to="/customers-list">
               <Button color="#0097E6"
                 onClick={handleCreateCustomer}
-              >EDITAR</Button>
+              >CRIAR</Button>
             </Link>
           </div>
         </div>
@@ -138,4 +134,4 @@ const CustomerEdited: React.FC = () => {
   );
 };
 
-export default CustomerEdited;
+export default Customer;
