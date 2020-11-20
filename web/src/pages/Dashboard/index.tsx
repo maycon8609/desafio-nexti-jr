@@ -22,7 +22,7 @@ const Dashboard: React.FC = () => {
             <Button color="#C23616">PRODUTOS</Button>
           </Link>
 
-          <Link to="/orders">
+          <Link to="/order">
             <Button color="#273C75">PEDIDOS</Button>
           </Link>
         </Buttons>
