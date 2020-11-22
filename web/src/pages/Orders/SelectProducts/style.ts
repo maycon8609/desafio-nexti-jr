@@ -41,7 +41,7 @@ export const Body = styled.body`
 
   width: 100%;
 
-  background: #FFFFFF; 
+  background: #F0F0F5; 
 
   .container {
     display: flex;
@@ -64,11 +64,11 @@ export const Body = styled.body`
     }
 
     .reset {
-      background: #C23616;
+      background: #c23616;
     }
 
     .confirm {
-      background: #192a56;
+      background: #273c75;
     }
   }
 

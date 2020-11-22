@@ -102,7 +102,7 @@ const SelectProducts: React.FC = () => {
           </Logo>
         </Link>
         <Buttons>
-          <Link to="/orders">
+          <Link to="/order">
             <Button color="transparent">VOLTAR</Button>
           </Link>
 
@@ -121,35 +121,35 @@ const SelectProducts: React.FC = () => {
               <button className="confirm" onClick={() => handleCreateOrder()}>CONFIRMAR</button>
             </Link>
           </div>
-            {products.map(product => (
-              <>
-                <div key={product.id} className="product-container">
-                  <div className="profile">
-                    <img src={ProfileCliente} alt="profile" />
-                  </div>
-
-                  <div className="product">
-                    <span>{`Sku: ${product.sku}`}</span>
-                    <span>{`Nome: ${product.name}`}</span>
-                    <span>{`Descrição: ${product.description}`}</span>
-                    <span>{`Preço: ${product.price}`}</span>
-                  </div>
-
-                  <div className="icons">
-                    <button>
-                      <FiPlusSquare color="#273C75" size={18} onClick={() => handleAddProduct(product.id)} />
-                    </button>
-                    <button>
-                      <FiMinusSquare color="#fbc531" size={18} onClick={() => handleRemoveProduct(product.id)} />
-                    </button>
-                    <button >
-                      <FiTrash color="#c23616" size={18} onClick={() => handleDeleteProduct(product.id)} />
-                    </button>
-                  </div>
+          {products.map(product => (
+            <>
+              <div key={product.id} className="product-container">
+                <div className="profile">
+                  <img src={ProfileCliente} alt="profile" />
                 </div>
-              </>
-            ))}
-          </div>
+
+                <div className="product">
+                  <span>{`Sku: ${product.sku}`}</span>
+                  <span>{`Nome: ${product.name}`}</span>
+                  <span>{`Descrição: ${product.description}`}</span>
+                  <span>{`Preço: ${product.price}`}</span>
+                </div>
+
+                <div className="icons">
+                  <button>
+                    <FiPlusSquare color="#273C75" size={18} onClick={() => handleAddProduct(product.id)} />
+                  </button>
+                  <button>
+                    <FiMinusSquare color="#fbc531" size={18} onClick={() => handleRemoveProduct(product.id)} />
+                  </button>
+                  <button >
+                    <FiTrash color="#c23616" size={18} onClick={() => handleDeleteProduct(product.id)} />
+                  </button>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
       </Body>
     </Container >
   );

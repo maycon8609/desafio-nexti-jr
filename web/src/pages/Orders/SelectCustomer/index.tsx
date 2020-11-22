@@ -37,6 +37,9 @@ const SelectCustomer: React.FC = () => {
           </Logo>
         </Link>
         <Buttons>
+          <Link to="/orders-list">
+            <Button color="transparent">LISTAR</Button>
+          </Link>
           <Link to="/products">
             <Button color="transparent">PRODUTOS</Button>
           </Link>
